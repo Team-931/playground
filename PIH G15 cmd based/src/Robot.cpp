@@ -77,7 +77,6 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-	driveSystem->ArcadeDrive(-oi.stick->GetY(), oi.stick->GetX());
 	frc::Scheduler::GetInstance()->Run();
 }
 

@@ -5,30 +5,33 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include <Commands/DriveNowhere.h>
+#include <Commands/DriveDefault.h>
 #include "../Robot.h"
 
-DriveNowhere::DriveNowhere() {
+DriveDefault::DriveDefault() {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(&Robot::driveSystem);
 }
 
 // Called just before this Command runs the first time
-void DriveNowhere::Initialize() {}
+void DriveDefault::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void DriveNowhere::Execute() {
-	Robot::driveSystem->ArcadeDrive(0,0);
+void DriveDefault::Execute() {
+	auto stick = Robot::oi.stick;
+	if(DriverStation::GetInstance().IsOperatorControl())
+		Robot::driveSystem->ArcadeDrive(-stick->GetY(), stick->GetX());
+	else Robot::driveSystem->ArcadeDrive(0,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveNowhere::IsFinished() {
+bool DriveDefault::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveNowhere::End() {}
+void DriveDefault::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveNowhere::Interrupted() {}
+void DriveDefault::Interrupted() {}

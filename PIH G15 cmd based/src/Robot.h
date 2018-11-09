@@ -8,7 +8,7 @@
 #pragma once
 
 #include <Commands/Command.h>
-#include <Commands/DriveNowhere.h>
+#include <Commands/DriveDefault.h>
 #include <Commands/SetDirDistance.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <TimedRobot.h>
@@ -34,7 +34,7 @@ private:
 	// Have it null by default so that if testing teleop it
 	// doesn't have undefined behavior and potentially crash.
 	frc::Command* autonomousCommand = nullptr;
-	DriveNowhere defaultAuto;
+	DriveDefault defaultAuto;
 	CommandGroup myAuto {"Auto 1"};
 	frc::SendableChooser<frc::Command*> autonomous_chooser;
 };

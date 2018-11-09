@@ -9,9 +9,9 @@
 
 #include <Commands/Command.h>
 
-class DriveNowhere : public frc::Command {
+class DriveDefault : public frc::Command {
 public:
-	DriveNowhere();
+	DriveDefault();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

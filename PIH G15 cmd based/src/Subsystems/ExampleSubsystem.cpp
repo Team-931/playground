@@ -5,8 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+#include <Commands/DriveDefault.h>
 #include "ExampleSubsystem.h"
-#include "../Commands/DriveNowhere.h"
 #include "../RobotMap.h"
 
 DriveSystem::DriveSystem()
@@ -20,7 +20,7 @@ DriveSystem::DriveSystem()
 
 void DriveSystem::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new DriveNowhere());
+	SetDefaultCommand(new DriveDefault());
 }
 
 void DriveSystem::PIDWrite(double PIDturn) {
