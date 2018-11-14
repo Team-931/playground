@@ -8,7 +8,24 @@
 #include "OI.h"
 
 #include <WPILib.h>
+# include "Robot.h"
+
+class GearShiftCommand:public Command{
+	DriveSystem::GearState gear;
+
+public:
+	GearShiftCommand(DriveSystem::GearState togear) : gear(togear) {}
+
+	void Initialize() override {Robot::driveSystem.shiftgears(gear);}
+//	void Execute() override;
+	bool IsFinished() override {return true;}
+//	void End() override;
+//	void Interrupted() override;
+
+};
 
 OI::OI() {
+	HighGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::High));
+	LowGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::Low));
 	// Process operator interface input here.
 }

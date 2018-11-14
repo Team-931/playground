@@ -7,9 +7,12 @@
 
 #pragma once
 #include <Joystick.h>
+#include <Buttons/JoystickButton.h>
 
 class OI {
 public:
 	Joystick* stick{0};
+	JoystickButton HighGearBtn{stick, 4};
+	JoystickButton LowGearBtn{stick, 2};
 	OI();
 };

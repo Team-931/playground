@@ -62,6 +62,7 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
+	::SmartDashboard::PutNumber("encoder clicks" , Robot::driveSystem.readEncoders());
 	frc::Scheduler::GetInstance()->Run();
 }
 
