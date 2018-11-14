@@ -7,9 +7,10 @@
 
 #pragma once
 
-#include <Commands/Subsystem.h>
 # include <WPILib.h>
 # include <AHRS.h>
+#include <Commands/Subsystem.h>
+
 # include <ctre/phoenix.h>
 
 class DriveSystem : public frc::Subsystem, frc::PIDOutput {
@@ -26,6 +27,11 @@ public:
 	void setDirection(double);
 	void driveAtSpeed(double);
 
+	enum GearState {
+		Low, High   //not allowed semicolon in enum
+//unless else assigned, low (enum constant 1) = 0, high (enum constant 2) = 1
+	};
+	void shiftgears(GearState);//uses gearstate as bool
 	double readEncoders();
 
 private:

@@ -11,8 +11,9 @@
 
 DriveSystem::DriveSystem()
     : frc::Subsystem("DriveSystem") {
-	leftDrive.SetInverted(false);
-	rightDrive.SetInverted(true);
+	leftDrive.SetInverted(true);
+	leftEncoder.SetReverseDirection(true);
+	rightDrive.SetInverted(false);
 
 	navigator.SetInputRange(-180, 180);
 	navigator.SetContinuous(true);
@@ -29,7 +30,8 @@ void DriveSystem::PIDWrite(double PIDturn) {
 
 void DriveSystem::navigatorPrep() {
 	navx.ZeroYaw();
-
+	leftEncoder.Reset();
+	rightEncoder.Reset();
 	p = frc::SmartDashboard::GetNumber("P", p);
 	i = frc::SmartDashboard::GetNumber("I", i);
 	d = frc::SmartDashboard::GetNumber("D", d);
@@ -49,6 +51,11 @@ void DriveSystem::driveAtSpeed(double spd) {
 
 double DriveSystem::readEncoders() {
 	return (rightEncoder.Get() + leftEncoder.Get())/2;
+}
+
+void DriveSystem::shiftgears(GearState gearState) {
+	leftServo.Set(gearState);
+	rightServo.Set(gearState);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
