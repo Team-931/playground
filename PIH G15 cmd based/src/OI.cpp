@@ -14,11 +14,12 @@ class GearShiftCommand:public Command{
 	DriveSystem::GearState gear;
 
 public:
-	GearShiftCommand() : gear(DriveSystem::Low) {}
+	GearShiftCommand() : gear(DriveSystem::Low)
+		{Requires(&Robot::driveSystem);}
 
 	void Initialize() override
-	{Robot::driveSystem.shiftgears(gear);
-	 gear = DriveSystem::GearState(1 - gear);}
+		{gear = DriveSystem::GearState(1 - gear);
+		Robot::driveSystem.shiftgears(gear);}
 
 //	void Execute() override;
 	bool IsFinished() override {return true;}
