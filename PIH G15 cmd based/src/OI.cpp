@@ -14,7 +14,8 @@ class GearShiftCommand:public Command{
 	DriveSystem::GearState gear;
 
 public:
-	GearShiftCommand(DriveSystem::GearState togear) : gear(togear) {}
+	GearShiftCommand(DriveSystem::GearState togear) : gear(togear)
+		{Requires(&Robot::driveSystem);}
 
 	void Initialize() override {Robot::driveSystem.shiftgears(gear);}
 //	void Execute() override;

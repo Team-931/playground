@@ -32,6 +32,9 @@ void DriveSystem::navigatorPrep() {
 	navx.ZeroYaw();
 	leftEncoder.Reset();
 	rightEncoder.Reset();
+
+	shiftgears(Low);
+
 	p = frc::SmartDashboard::GetNumber("P", p);
 	i = frc::SmartDashboard::GetNumber("I", i);
 	d = frc::SmartDashboard::GetNumber("D", d);
@@ -54,6 +57,7 @@ double DriveSystem::readEncoders() {
 }
 
 void DriveSystem::shiftgears(GearState gearState) {
+	::SmartDashboard::PutBoolean("High gear ", gearState == High);
 	leftServo.Set(gearState);
 	rightServo.Set(gearState);
 }
