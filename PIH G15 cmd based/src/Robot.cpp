@@ -11,10 +11,10 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 DriveSystem Robot::driveSystem;
-OI *Robot::oi = 0;
+OI /***/Robot::oi /*= 0*/;
 
 void Robot::RobotInit() {
-	oi = new OI;//.stick = new Joystick(0);
+	//oi = new OI;//.stick = new Joystick(0);
 	frc::SmartDashboard::SetDefaultNumber("P", .01);
 	frc::SmartDashboard::SetDefaultNumber("I", 0);
 	frc::SmartDashboard::SetDefaultNumber("D", 0);

@@ -18,7 +18,7 @@ void DriveDefault::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DriveDefault::Execute() {
-	const auto& stick = Robot::oi->stick;
+	const auto& stick = Robot::oi./*->*/stick;
 	if(DriverStation::GetInstance().IsOperatorControl())
 		Robot::driveSystem->ArcadeDrive(-stick.GetY(), stick.GetX());
 	else Robot::driveSystem->ArcadeDrive(0,0);
