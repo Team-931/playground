@@ -26,7 +26,7 @@ public:
 };
 
 OI::OI() {
-	HighGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::High));
-	LowGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::Low));
+	/*HighGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::High));
+	LowGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::Low));*/
 	// Process operator interface input here.
 }
