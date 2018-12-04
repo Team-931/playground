@@ -11,10 +11,10 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 DriveSystem Robot::driveSystem;
-OI Robot::oi;
+OI *Robot::oi = 0;
 
 void Robot::RobotInit() {
-	oi.stick = new Joystick(0);
+	oi = new OI;//.stick = new Joystick(0);
 	autonomous_chooser.AddDefault("Default Auto", &defaultAuto);
 	myAuto.AddSequential(new SetDirDistance (20, 5000));
 	autonomous_chooser.AddObject("My Auto", &myAuto);
