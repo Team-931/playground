@@ -12,6 +12,7 @@
 class SetDirDistance : public frc::Command {
 	double direction;
 	double distance;
+	bool reverse;
 public:
 	SetDirDistance(double dir, double dist);
 	void Initialize() override;

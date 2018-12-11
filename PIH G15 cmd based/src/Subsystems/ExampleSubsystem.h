@@ -33,6 +33,7 @@ public:
 	};
 	void shiftgears(GearState);//uses gearstate as bool
 	double readEncoders();
+	void resetEncoders();
 
 private:
 	::WPI_TalonSRX motor0 {8}, motor1 {3}, motor2{2}, motor3{4};

@@ -21,10 +21,11 @@ void Robot::RobotInit() {
 
 	autonomous_chooser.AddDefault("Default Auto", &defaultAuto);
 	myAuto.AddSequential(new SetDirDistance (0, 10000));
-	myAuto.AddSequential(new SetDirDistance (90, 15000));
+	myAuto.AddSequential(new SetDirDistance (90, 10000));
 
 	autonomous_chooser.AddObject("My Auto", &myAuto);
 	frc::SmartDashboard::PutData("Auto Modes", &autonomous_chooser);
+	frc::SmartDashboard::PutData(&myAuto);
 }
 
 /**

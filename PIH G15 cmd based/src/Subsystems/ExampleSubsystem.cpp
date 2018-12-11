@@ -30,11 +30,9 @@ void DriveSystem::PIDWrite(double PIDturn) {
 
 void DriveSystem::navigatorPrep() {
 	navx.ZeroYaw();
-	leftEncoder.Reset();
-	rightEncoder.Reset();
-
+	resetEncoders();
 	shiftgears(Low);
-
+	turn = 0;
 	p = frc::SmartDashboard::GetNumber("P", p);
 	i = frc::SmartDashboard::GetNumber("I", i);
 	d = frc::SmartDashboard::GetNumber("D", d);
@@ -54,6 +52,11 @@ void DriveSystem::driveAtSpeed(double spd) {
 
 double DriveSystem::readEncoders() {
 	return (rightEncoder.Get() + leftEncoder.Get())/2;
+}
+
+void DriveSystem::resetEncoders() {
+	leftEncoder.Reset();
+	rightEncoder.Reset();
 }
 
 void DriveSystem::shiftgears(GearState gearState) {
