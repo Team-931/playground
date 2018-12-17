@@ -14,12 +14,10 @@ class GearShiftCommand:public Command{
 	DriveSystem::GearState gear;
 
 public:
-	GearShiftCommand() : gear(DriveSystem::Low) {}
+	GearShiftCommand(DriveSystem::GearState togear) : gear(togear)
+		{Requires(&Robot::driveSystem);}
 
-	void Initialize() override
-	{Robot::driveSystem.shiftgears(gear);
-	 gear = DriveSystem::GearState(1 - gear);}
-
+	void Initialize() override {Robot::driveSystem.shiftgears(gear);}
 //	void Execute() override;
 	bool IsFinished() override {return true;}
 //	void End() override;
@@ -28,6 +26,7 @@ public:
 };
 
 OI::OI() {
-	GearToggle.WhenPressed( new GearShiftCommand);
+	HighGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::High));
+	LowGearBtn.WhenPressed(new GearShiftCommand(DriveSystem::Low));
 	// Process operator interface input here.
 }

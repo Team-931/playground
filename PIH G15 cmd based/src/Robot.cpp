@@ -14,11 +14,17 @@ DriveSystem Robot::driveSystem;
 OI Robot::oi;
 
 void Robot::RobotInit() {
-	oi.stick = new Joystick(0);
+	frc::SmartDashboard::SetDefaultNumber("P", .01);
+	frc::SmartDashboard::SetDefaultNumber("I", 0);
+	frc::SmartDashboard::SetDefaultNumber("D", 0);
+
 	autonomous_chooser.AddDefault("Default Auto", &defaultAuto);
-	myAuto.AddSequential(new SetDirDistance (20, 5000));
+	myAuto.AddSequential(new SetDirDistance (0, 10000));
+	myAuto.AddSequential(new SetDirDistance (90, 10000));
+
 	autonomous_chooser.AddObject("My Auto", &myAuto);
 	frc::SmartDashboard::PutData("Auto Modes", &autonomous_chooser);
+	frc::SmartDashboard::PutData(&myAuto);
 }
 
 /**

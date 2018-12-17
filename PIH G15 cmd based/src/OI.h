@@ -11,7 +11,8 @@
 
 class OI {
 public:
-	Joystick* stick{0};
-	JoystickButton GearToggle{stick, 4};
+	Joystick stick{0};
+	JoystickButton HighGearBtn{&stick, 4};
+	JoystickButton LowGearBtn{&stick, 2};
 	OI();
 };
