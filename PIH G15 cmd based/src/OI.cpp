@@ -13,6 +13,7 @@
 class GearShiftCommand: public Command {
 
 public:
+	GearShiftCommand() :Command("Go to high gear") {}
 
 	void Initialize() override {Robot::driveSystem.shiftgears(DriveSystem::High);}
 //	void Execute() override;
@@ -23,6 +24,7 @@ public:
 } gearShiftCommand;
 
 struct TwoGearBtns: Command {
+	TwoGearBtns() : Command("Use both gear shift buttons") {}
 	bool IsFinished() {return false;}
 	void Initialize() {OI::isTwoBtn = true;}
 	void End() {OI::isTwoBtn = false;}

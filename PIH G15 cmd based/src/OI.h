@@ -26,7 +26,7 @@ friend struct TwoGearBtns;
 public:
 	Joystick stick{0};
 	MaybeJButton HighGearBtn{&stick, 4, TwoBtn};
-	MaybeJButton LowGearBtn{&stick, 1, TwoBtn};
+	MaybeJButton LowGearBtn{&stick, 2, TwoBtn};
 	MaybeJButton ToggleGearBtn{&stick, 4, OneBtn};
 	OI();
 };

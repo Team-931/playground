@@ -14,6 +14,7 @@ DriveSystem Robot::driveSystem;
 OI Robot::oi;
 
 void Robot::RobotInit() {
+	auto cam = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 	frc::SmartDashboard::SetDefaultNumber("P", .01);
 	frc::SmartDashboard::SetDefaultNumber("I", 0);
 	frc::SmartDashboard::SetDefaultNumber("D", 0);
